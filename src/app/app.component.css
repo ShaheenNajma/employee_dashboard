@@ -1,0 +1,19 @@
+.emp-table{
+    width: 800px;
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 3px;
+}
+
+.headers{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 30px;
+    background-image: linear-gradient(to bottom right, skyblue, lavender, pink);
+    direction: ltr;
+}
+
+th {
+    text-align: center;
+}

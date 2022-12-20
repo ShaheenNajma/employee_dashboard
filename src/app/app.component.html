@@ -1,0 +1,41 @@
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<div *ngIf="employees" class = "container emp-table">
+  <div class ="headers">
+    <button class ="btn btn-primary"> Add Employee</button>
+  </div>
+  <table class = "table">
+    <thead class>
+      <tr class="table-danger">
+        <th>Name</th>
+        <th>Emp Id</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+      <tbody class ="text-center">
+        <tr *ngFor= "let emp of employees.data">
+          <td style = " text-align: left;"><img height="25px" width= 25px src= "./assets/icon-1.svg" alt = "test"> {{emp.fname + " " + emp.lname}}</td>
+          <td>{{emp.empId}}</td>
+          <td>{{emp.age | age}}</td>
+          <td>{{emp.emailId}}</td >
+          <td>{{emp.phone}</td>
+          <td>{{emp.dept}}</td>
+          <td>
+            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons font size:2em">&#xE254;</i></a>
+          </td>
+          <td>
+            <a class="delete" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
