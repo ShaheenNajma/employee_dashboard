@@ -1,21 +1,21 @@
 <head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <div *ngIf="employees" class = "container emp-table">
   <div class ="headers">
-    <button class ="btn btn-primary"> Add Employee</button>
+    <h2 class = "table-title"> Employee Dashboard</h2>
+    <button class ="btn btn-primary" (click) = "openForm(null)"> Add Employee</button>
   </div>
   <table class = "table">
-    <thead class>
+    <thead class> 
       <tr class="table-danger">
         <th>Name</th>
-        <th>Emp Id</th>
+        <th>EmpId</th>
         <th>Age</th>
         <th>Email</th>
-        <th>Phone</th>
         <th>Department</th>
         <th></th>
         <th></th>
@@ -25,17 +25,54 @@
         <tr *ngFor= "let emp of employees.data">
           <td style = " text-align: left;"><img height="25px" width= 25px src= "./assets/icon-1.svg" alt = "test"> {{emp.fname + " " + emp.lname}}</td>
           <td>{{emp.empId}}</td>
-          <td>{{emp.age | age}}</td>
+          <td>{{emp.dob | age}}</td>
           <td>{{emp.emailId}}</td >
-          <td>{{emp.phone}</td>
           <td>{{emp.dept}}</td>
           <td>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons font size:2em">&#xE254;</i></a>
+            <a class="edit" (click) = "openForm(emp)" title="Edit"  data-toggle="tooltip"><i class="material-icons font size:2em">&#xE254;</i></a>
           </td>
           <td>
-            <a class="delete" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+            <a class="delete" title="Delete" (click) = "deleteEmp(emp.empId)" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>
     </tbody>
   </table>
+</div>
+
+<div class = "form-wrapper" *ngIf ="showForm">  
+  <div class = "employeeform">
+    <h2 class = "text-center text-info">{{formHeader}}</h2>
+    <div class = "group">
+      <label for ="employee">Name:</label>
+        <input type ="text" class="form-control" [(ngModel)] =  "employeeName" name="Ename" required>
+    </div>
+  <!-- </div> -->
+
+    <div class = "group">
+      <label for ="id">Id:</label>
+        <input type ="number" class="form-control" [(ngModel)] =  "employeeID" name="Eid" required>
+    </div>
+  
+    <div class = "group">
+      <label for ="age">Age:</label>
+        <input type ="number" class="form-control" [(ngModel)] =  "age" name="Eage" required>
+    </div>
+
+    <div class = "group">
+      <label for ="email">Email:</label>
+        <input type ="mail" class="form-control" [(ngModel)] =  "mail" name="EmailID" required>
+    </div>
+
+    <div class = "group">
+      <label for ="department">Dept:</label>
+        <input type ="text" class="form-control" [(ngModel)] =  "depart" name="Edepartment" required>
+    </div>
+
+    <div class ="action">
+      <button class = "btn btn-primary save" (click)="saveEmployee()">Save Changes</button>
+      <button class = "btn btn-danger cancel" (click)="closeForm()">Cancel</button>
+    </div>
+
+ </div>
+
 </div>

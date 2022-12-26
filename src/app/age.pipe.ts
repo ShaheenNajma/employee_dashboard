@@ -4,13 +4,18 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'age',
 })
 export class AgePipe implements PipeTransform {
-  transform(value: number, ...args: any[]) {
-    console.log( value);
-    // return value;
-    // let currentYear: any = new Date().getFullYear();
-    // console.log(value)
-    // let birthYear: any = new Date(value).getFullYear();
-    // let age = currentYear - birthYear;
-    // return age + '';
+  transform(value: string): string {
+    const today = new Date();
+    const birthDate = new Date(value);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+      months += 12;
+    }
+    if (today.getDate() < birthDate.getDate()) {
+      months--;
+    }
+    return `${age} Y, ${months}M`
   }
 }

@@ -7,6 +7,8 @@ import { EmployeeServiceService } from './employee-service.service';
 
 import { MatIconModule } from '@angular/material/icon';
 import { AgePipe } from './age.pipe';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -18,7 +20,7 @@ import { AgePipe } from './age.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatIconModule
+    FormsModule
   ],
   providers: [EmployeeServiceService],
   bootstrap: [AppComponent]
